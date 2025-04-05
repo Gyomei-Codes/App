@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>U GOT HACKED</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: lime;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      animation: flickerBg 0.2s infinite alternate;
+    }
+
+    h1 {
+      font-size: 5rem;
+      text-shadow: 0 0 10px lime;
+      animation: blink 1s infinite, glitch 0.3s infinite;
+      margin: 0;
+      user-select: none;
+    }
+
+    @keyframes flickerBg {
+      from { background-color: black; }
+      to { background-color: #1a0000; }
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-1px, 1px); }
+      80% { transform: translate(1px, -1px); }
+      100% { transform: translate(0); }
+    }
+
+    .bar-container {
+      width: 80%;
+      height: 30px;
+      border: 2px solid lime;
+      margin-top: 40px;
+    }
+
+    .bar {
+      height: 100%;
+      background: lime;
+      width: 0%;
+      animation: load 10s linear forwards;
+    }
+
+    .label {
+      color: lime;
+      margin-top: 10px;
+      font-size: 1.5rem;
+      text-shadow: 0 0 5px lime;
+    }
+
+    .popup {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #222;
+      border: 2px solid red;
+      color: red;
+      padding: 20px 30px;
+      font-size: 1.2rem;
+      box-shadow: 0 0 15px red;
+      text-align: center;
+      display: none;
+      z-index: 999;
+    }
+
+    .countdown {
+      margin-top: 20px;
+      font-size: 2rem;
+      color: red;
+      display: none;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes load {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <h1>U GOT HACKED</h1>
+
+  <div class="bar-container">
+    <div class="bar"></div>
+  </div>
+  <div class="label">Deleting system32...</div>
+
+  <div class="popup" id="fakePopup">⚠️ ERROR: CRITICAL SYSTEM FAILURE DETECTED</div>
+  <div class="countdown" id="countdown">Shutting down in 10 seconds...</div>
+
+  <audio autoplay loop>
+    <source src="https://www.soundjay.com/button/sounds/beep-07.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Auto fullscreen
+    function goFullScreen() {
+      const el = document.documentElement;
+      if (el.requestFullscreen) el.requestFullscreen();
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      else if (el.mozRequestFullScreen) el.mozRequestFullScreen();
+      else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    }
+
+    setTimeout(goFullScreen, 500);
+
+    // Show fake popup after 6 sec
+    setTimeout(() => {
+      document.getElementById("fakePopup").style.display = "block";
+    }, 6000);
+
+    // Show countdown after 8 sec
+    setTimeout(() => {
+      document.getElementById("countdown").style.display = "block";
+    }, 8000);
+  </script>
+</body>
+</html>
